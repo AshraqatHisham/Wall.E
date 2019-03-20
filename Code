@@ -1,0 +1,385 @@
+from OpenGL.GL import *
+from OpenGL. GLUT import *
+import numpy as np
+from math import *
+
+def leg():
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.6, 0.6, 0.6)
+    glVertex(0.2, -0.4)
+    glVertex(0.3, -0.4)
+    glVertex(0.35, -0.35)
+    glVertex(0.35, -0.25)
+    glVertex(0.2, -0.25)
+    glEnd()
+
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.6, 0.6, 0.6)
+    glVertex(-0.2, -0.4)
+    glVertex(-0.3, -0.4)
+    glVertex(-0.35, -0.35)
+    glVertex(-0.35, -0.25)
+    glVertex(-0.2, -0.25)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.6, 0.6, 0.6)
+    glVertex(0.34, -0.55)
+    glVertex(0.54, -0.55)
+    glVertex(0.54, -0.2)
+    glVertex(0.34, -0.2)
+    glEnd()
+
+
+    glLineWidth(2.5)
+    glBegin(GL_LINE_LOOP)
+    glColor3f(0, 0, 0.3)
+    glVertex(0.34, -0.55)
+    glVertex(0.54, -0.55)
+    glVertex(0.54, -0.2)
+    glVertex(0.34, -0.2)
+    glEnd()
+
+    for y in np.arange(-0.52, -0.21, 0.03):
+        glLineWidth(1)
+        glBegin(GL_LINES)
+        glColor3f(0, 0, 0.3)
+        glVertex(0.34, y)
+        glVertex(0.54, y)
+        glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.6, 0.6, 0.6)
+    glVertex(-0.34, -0.55)
+    glVertex(-0.54, -0.55)
+    glVertex(-0.54, -0.2)
+    glVertex(-0.34, -0.2)
+    glEnd()
+
+    glLineWidth(2.5)
+    glBegin(GL_LINE_LOOP)
+    glColor3f(0, 0, 0.3)
+    glVertex(-0.34, -0.55)
+    glVertex(-0.54, -0.55)
+    glVertex(-0.54, -0.2)
+    glVertex(-0.34, -0.2)
+    glEnd()
+    for y in np.arange(-0.52, -0.21, 0.03):
+        glLineWidth(1)
+        glBegin(GL_LINES)
+        glColor3f(0, 0, 0.3)
+        glVertex(-0.34, y)
+        glVertex(-0.54, y)
+        glEnd()
+
+
+def triangle():
+    glBegin(GL_POLYGON)
+    glVertex(0,0)
+    glVertex(.1,.1)
+    glVertex(-.1, .1)
+    glEnd()
+
+    glLineWidth(2.5)
+    glBegin(GL_LINE_LOOP)
+    glColor3f(0,0,.3)
+    glVertex(0, 0)
+    glVertex(.1, .1)
+    glVertex(-.1, .1)
+    glEnd()
+
+
+
+
+
+def line():
+    glBegin(GL_LINES)
+    glVertex(.28, -7 / 80)
+    glVertex(.28, -.03)
+    glEnd()
+
+def circle(r=0,s=2):
+
+    glBegin(GL_POLYGON)
+    for theta in np.arange(0,s*pi,.0001):
+        x=r*cos(theta)
+        y=r*sin(theta)
+        glVertex(x,y)
+    glEnd()
+
+def eye():
+
+    #right
+    glLoadIdentity()
+    glColor3f(0, 0, 0)
+
+    glTranslate(.13, .5, 0)
+    glRotate(30, 0, 0, 1)
+    glScale(.8, 1, 1)
+
+    circle(.1)
+
+    glLoadIdentity()
+    glColor3f(1,1,1)
+    glTranslate(.13,.5,0)
+    glRotate(30, 0, 0, 1)
+    glScale(.8,1,1)
+    circle(.07)
+
+    glLoadIdentity()
+    glColor3f(0,0,0)
+    glTranslate(.13,.5,0)
+    glRotate(30, 0, 0, 1)
+    glScale(.7,1,1)
+    circle(.02)
+    #left
+    glLoadIdentity()
+    glColor3f(0,0,0)
+    glTranslate(-.13, .5, 0)
+    glRotate(-30, 0, 0, 1)
+    glScale(.8, 1, 1)
+
+    circle(.1)
+
+    glLoadIdentity()
+    glColor3f(1,1, 1)
+    glTranslate(-.13, .5, 0)
+    glRotate(-30, 0, 0, 1)
+    glScale(.8, 1, 1)
+    circle(.07)
+
+    glLoadIdentity()
+    glColor3f(0, 0, 0)
+    glTranslate(-.13, .5, 0)
+    glRotate(-30, 0, 0, 1)
+    glScale(.7, 1, 1)
+    circle(.02)
+
+
+
+
+def point(x=0,y=0):
+    glPointSize(2.4)
+    glBegin(GL_POINTS)
+    glVertex(x,y)
+    glEnd()
+
+
+
+def linestrip():
+    glBegin(GL_LINE_STRIP)
+    glVertex(.18, .2)
+    glVertex(.18, .075)
+    glVertex(-.18, .075)
+    glVertex(-.18, .2)
+    glEnd()
+def lineloop():
+    glLineWidth(2.5)
+    glBegin(GL_LINE_LOOP)
+    glVertex(.3, .2)
+    glVertex(-.3, .2)
+    glVertex(-.3, - .3)
+    glVertex(.3, -.3)
+    glEnd()
+
+def polygon():
+    glBegin(GL_POLYGON)
+    glVertex(.3, .2)
+    glVertex(-.3, .2)
+    glVertex(-.3, - .3)
+    glVertex(.3, -.3)
+    glEnd()
+def hand():
+#LEFT HAND
+    glBegin(GL_POLYGON)
+    glColor3f(.32, .52, 1)
+    glVertex(.34, -7 / 80)
+    glVertex(1 / 6, -7 / 80)
+    glVertex(1 / 6, - .05)
+    glVertex(.21, -.03)
+    glVertex(.36, -.03)
+    glVertex(.38, -.05)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glVertex(.38, -.15)
+    glVertex(.36, -.17)
+    glVertex(.21, -.17)
+    glVertex(1 / 6, -.155)
+    glVertex(1 / 6, -.1175)
+    glVertex(.34, -.1175)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glVertex(.38, -.05)
+    glVertex(.33, -.05)
+    glVertex(.33, - .15)
+    glVertex(.38, -.15)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1,1,1)
+    glVertex(1 / 5, - 7 / 80)
+    glVertex(1 / 5, -.1175)
+    glVertex(.33, -.1175)
+    glVertex(.33, -7 / 80)
+    glEnd()
+
+    glLineWidth(2.5)
+    glBegin(GL_LINE_STRIP)
+    glColor3f(0, 0, .2)
+#up
+    glVertex(.33, -7/80)
+    glVertex(1 / 6, -7 / 80)
+    glVertex(1/6, - .05)
+    glVertex(.21, -.03)
+    glVertex(.36, -.03)
+    glVertex(.38, -.05)
+    glVertex(.38, -.15)
+    # low
+    glVertex(.36, -.17)
+    glVertex(.21, -.17)
+    glVertex(1/6, -.155)
+    glVertex(1/6, -.1175)
+    glVertex(.33, -.1175)
+
+    glEnd()
+
+
+    glLineWidth(2.5)
+    glBegin(GL_LINE_STRIP)
+    glColor3f(0, 0, .2)
+    glVertex(.38, -.05)
+    glVertex(.33, -.05)
+    glVertex(.33, - .15)
+    glVertex(.38, -.15)
+    glEnd()
+
+
+    glBegin(GL_LINES)
+    glColor3f(0, 0, .2)
+    glVertex(.28, -7/80)
+    glVertex(.28, -.03)
+    glVertex(.28, - .1175)
+    glVertex(.28, -.17)
+    glVertex(1/5, - 7/80)
+    glVertex(1/5, -.1175)
+
+    glEnd()
+
+def draw():
+
+
+
+    glClearColor(1,1,1,1)
+    glClear(GL_COLOR_BUFFER_BIT)
+    leg()
+    glColor3f(1,.75,0)
+    polygon()
+
+
+
+    glLoadIdentity()
+    glLineWidth(2.5)
+    glColor3f(0,0,.3)
+    lineloop()
+
+    linestrip()
+
+    glColor3f(.32,0.52,1)
+    glTranslate(-.08,.14,0)
+    glScale(.16,.12,1)
+    polygon()
+
+    glLoadIdentity()
+    glColor3f(0,0,.3)
+    glTranslate(-.08,.14,0)
+    glScale(.18,.12,1)
+    lineloop()
+
+    glLoadIdentity()
+    glColor3f(0,0,.2)
+    glTranslate(.1,.135,0)
+    circle(.03)
+    glLoadIdentity()
+    glColor3f(1,0,0)
+    glTranslate(.1,.136,0)
+    circle(.015)
+    glLoadIdentity()
+    glColor3f(0,0,.3)
+    glTranslate(.12,-.125,0)
+    glScale(2, 1, 1)
+    glRotate(90,0,0,1)
+    line()
+
+    glLoadIdentity()
+    glColor3f(0, 0, .3)
+    glTranslate(-.36, -.125, 0)
+    glScale(2, 1, 1)
+    glRotate(90, 0, 0, 1)
+    line()
+
+    glLoadIdentity()
+    glColor3f(1,.75,0)
+    glTranslate(0,.264,0)
+    glScale(.17,.19,1)
+    polygon()
+
+    glLoadIdentity()
+    glColor3f(0, 0, .3)
+    glTranslate(0,.36,0)
+    glScale(.3,.8,0)
+    glRotate(180,1,0,0)
+    linestrip()
+
+
+
+    glLoadIdentity()
+    glColor3f(1,.75,0)
+    glScale(1.7,1.7,1)
+    glTranslate(0,.2,0)
+    triangle()
+
+    glLoadIdentity()
+    eye()
+
+
+
+    glLoadIdentity()
+    glColor3f(1, .7, 0)
+    glTranslate(0, .345, 0)
+    glScale(.13, .13, 1)
+    polygon()
+
+    glLoadIdentity()
+    glColor3f(0, 0, .3)
+    glTranslate(0, .42, 0)
+    glScale(.21, .61, 0)
+    glRotate(180, 1, 0, 0)
+    linestrip()
+
+    #body
+    glLoadIdentity()
+    glTranslate(0,.145,0)
+    hand()
+    glRotate(180,0,1,0)
+    hand()
+    glLoadIdentity()
+
+
+
+
+
+
+    glFlush()
+
+
+
+glutInit()
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB )
+glutInitWindowSize(500, 500)
+glutCreateWindow(b"First OpenGL program")
+glutDisplayFunc(draw)
+glutMainLoop()
